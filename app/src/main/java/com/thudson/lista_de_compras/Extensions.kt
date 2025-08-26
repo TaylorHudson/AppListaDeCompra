@@ -10,3 +10,8 @@ fun BigDecimal.toCurrency(): String {
     val format = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
     return format.format(this)
 }
+
+fun String.parseBrazilianCurrency(): BigDecimal {
+    val clean = this.replace(".", "").replace(",", ".")
+    return clean.toBigDecimalOrNull() ?: BigDecimal.ZERO
+}

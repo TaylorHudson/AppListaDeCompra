@@ -48,10 +48,10 @@ class ListItemsActivity : AppCompatActivity() {
     }
 
     private fun onAddListItemClick() {
-        EditListItemDialog(null) { name, _ ->
-            viewModel.addList(ShoppingList(name = name.capitalize(), items = listOf(ShoppingItem(name = "Arroz"), ShoppingItem(name = "Feijão"))))
-            ToastUtil.showShort(this, "Lista criada")
-        }.show(supportFragmentManager, "AddListDialog")
+        EditListItemDialog(null) { item, list ->
+            viewModel.addItem(list!!.id, item)
+            ToastUtil.showShort(this, "Item criado")
+        }.show(supportFragmentManager, "AddListItemDialog")
     }
 
     private fun onBackButtonClick() {
